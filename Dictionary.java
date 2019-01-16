@@ -21,9 +21,7 @@ public class Dictionary {
     word = reader.nextLine();
     word = getFormalText(word);   // changes first letter to capital and rest to lowercase
     
-    boolean exists = checkAllLowerCase(word);   // check if there is another version that has the same spelling
-    
-    if (exists) {
+    if (words.containsKey(word)) {
       Details wordDetails = new Details(reader);
       wordDetails.addPOS();     // gets the part of speech
       wordDetails.addDefinition();    // gets the definition
