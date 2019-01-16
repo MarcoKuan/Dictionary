@@ -56,6 +56,7 @@ public class Dictionary {
     
     System.out.print("Enter the word you wish to search for: ");
     word = reader.nextLine();
+    word = getFormalText(word);   // converts to capital first and lowercase the rest
     
     if (words.containsKey(word)) {
       Details wordDetails = words.get(word);   // get the specific word and its details
@@ -66,14 +67,15 @@ public class Dictionary {
       System.out.println("The word you entered does not exist");
       return;
     }
-    
   }
   
+  // Prints out the part of speeches and definitions of the word specified
   public void displayDetails() {
     String word;
     
     System.out.print("Enter the word you wish to search for: ");
     word = reader.nextLine();
+    word = getFormalText(word);   // converts to capital first and lowercase the rest
     
     if (words.containsKey(word)) {
       System.out.println("\n\nDisplaying details...\n");
@@ -86,8 +88,11 @@ public class Dictionary {
       System.out.println("The word you entered does not exist");
       return;
     }
-    
-    
+  }
+
+  public void removeWord() {
+    System.out.print("Enter the word you wish to remove: ");
+
   }
   
   // Checks if the user typed a lower case version of the word
