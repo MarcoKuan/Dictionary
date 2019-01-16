@@ -21,7 +21,7 @@ public class Dictionary {
     word = reader.nextLine();
     word = getFormalText(word);   // changes first letter to capital and rest to lowercase
     
-    if (words.containsKey(word)) {
+    if (!words.containsKey(word)) {
       Details wordDetails = new Details(reader);
       wordDetails.addPOS();     // gets the part of speech
       wordDetails.addDefinition();    // gets the definition
@@ -89,12 +89,18 @@ public class Dictionary {
   }
 
   public void removeWord() {
-    System.out.print("Enter the word you wish to remove: ");
+    String word;
 
+    System.out.print("Enter the word you wish to remove: ");
+    word = reader.nextLine();
+    word = getFormalText(word);   // first letter uppercase, rest lowercase
+
+    words.remove(word);
   }
   
   // Checks if the user typed a lower case version of the word
   // Returns true if it doesn't exist  |  false if it does exist
+  // Useless 
   private boolean checkAllLowerCase(String word) {
     word = word.toLowerCase();
     
