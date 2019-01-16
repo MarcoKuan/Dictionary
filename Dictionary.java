@@ -20,9 +20,9 @@ public class Dictionary {
     System.out.print("Enter a word you wish to add: ");
     word = reader.nextLine();
     word = getFormalText(word);   // changes first letter to capital and rest to lowercase
-
+    
     boolean exists = checkAllLowerCase(word);   // check if there is another version that has the same spelling
-
+    
     if (exists) {
       Details wordDetails = new Details(reader);
       wordDetails.addPOS();     // gets the part of speech
@@ -50,28 +50,68 @@ public class Dictionary {
     }
   }
   
+  // Add a new part of speech and definition
+  public void newDetails() {
+    String word;
+    
+    System.out.print("Enter the word you wish to search for: ");
+    word = reader.nextLine();
+    
+    if (words.containsKey(word)) {
+      Details wordDetails = words.get(word);   // get the specific word and its details
+      
+      wordDetails.addPOS();
+      wordDetails.addDefinition();
+    } else {
+      System.out.println("The word you entered does not exist");
+      return;
+    }
+    
+  }
+  
+  public void displayDetails() {
+    String word;
+    
+    System.out.print("Enter the word you wish to search for: ");
+    word = reader.nextLine();
+    
+    if (words.containsKey(word)) {
+      System.out.println("\n\nDisplaying details...\n");
+      System.out.println(word);
+
+      Details wordDetails = words.get(word);  // get the word's details
+
+      System.out.println(wordDetails);    // prints the details
+    } else {
+      System.out.println("The word you entered does not exist");
+      return;
+    }
+    
+    
+  }
+  
   // Checks if the user typed a lower case version of the word
   // Returns true if it doesn't exist  |  false if it does exist
   private boolean checkAllLowerCase(String word) {
     word = word.toLowerCase();
-
+    
     // Check each key by lowercasing it
     for (String eachKey : words.keySet()) {
       eachKey = eachKey.toLowerCase();   // convert to lowercase
-
+      
       if (eachKey.equals(word)) {
         return false;
       }
     }
-
+    
     return true;
   }
-
+  
   // Returns the formal version of the text (first letter is capital and the rest is lowercased)
   private String getFormalText(String word) {
     word = word.toLowerCase();    // converts all to lowercase
     word = word.substring(0, 1).toUpperCase() + word.substring(1);    // changes first letter to capital
-
+    
     return word;
   }
 }
