@@ -98,24 +98,6 @@ public class Dictionary {
     words.remove(word);
   }
   
-  // Checks if the user typed a lower case version of the word
-  // Returns true if it doesn't exist  |  false if it does exist
-  // Useless 
-  private boolean checkAllLowerCase(String word) {
-    word = word.toLowerCase();
-    
-    // Check each key by lowercasing it
-    for (String eachKey : words.keySet()) {
-      eachKey = eachKey.toLowerCase();   // convert to lowercase
-      
-      if (eachKey.equals(word)) {
-        return false;
-      }
-    }
-    
-    return true;
-  }
-  
   // Returns the formal version of the text (first letter is capital and the rest is lowercased)
   private String getFormalText(String word) {
     word = word.toLowerCase();    // converts all to lowercase
