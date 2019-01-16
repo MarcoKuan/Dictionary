@@ -26,4 +26,25 @@ public class Details {
     System.out.print("Add a definition: ");
     definition.add(reader.nextLine());
   }
+
+  // Getter methods
+  public ArrayList<String> getPOS() {
+    return partsOfSpeech;
+  }
+
+  public ArrayList<String> getDefinition() {
+    return definition;
+  }
+
+  // toString method
+  // Ex: "[number]. ([part of speech]) [definition]"
+  public String toString() {
+    String message = "";
+
+    for (int i = 0; i < definition.size(); ++i) {
+      message += (i + 1) + "." + " (" + partsOfSpeech.get(i) + ") " + definition.get(i) + "\n";
+    }
+
+    return message;
+  }
 }
